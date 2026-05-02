@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Dutch Football Club — Play with Passion. Train with Purpose. Compete for Glory.</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{--orange:#FF6600;--ink:#0A0A0A;--bg:#0E0E0F;--card:#17171A;--line:rgba(255,255,255,.08);--mute:#A0A0A0;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:#fff;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+  img,video{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1400px;margin:0 auto;padding:0 40px;}
+  h1,h2,h3{font-family:'Bebas Neue';letter-spacing:1px;line-height:.95;}
+  .serif{font-family:'Playfair Display',serif;font-style:italic;font-weight:500;}
+  .eyebrow{font-size:11px;color:var(--orange);letter-spacing:5px;text-transform:uppercase;font-weight:700;}
+  .btn{font-family:'Bebas Neue';letter-spacing:2.5px;font-size:14px;padding:15px 26px;border-radius:3px;display:inline-flex;align-items:center;gap:10px;transition:.3s;}
+  .btn-primary{background:var(--orange);color:#000;}
+  .btn-primary:hover{background:#fff;transform:translateY(-2px);}
+  .btn-ghost{border:1px solid rgba(255,255,255,.22);color:#fff;}
+  .btn-ghost:hover{border-color:var(--orange);color:var(--orange);}
+
+  /* APP-FILL TRANSITION */
+  .trans{position:fixed;inset:0;z-index:9999;background:var(--ink);display:flex;align-items:center;justify-content:center;transition:clip-path 1.1s cubic-bezier(.76,0,.24,1);}
+  .trans img{width:160px;height:160px;filter:drop-shadow(0 12px 40px rgba(255,102,0,.4));animation:zoomSpin 1s cubic-bezier(.22,1,.36,1) forwards;}
+  @keyframes zoomSpin{from{transform:scale(.6) rotate(-8deg);opacity:0;}to{transform:scale(1) rotate(0);opacity:1;}}
+  .trans.done{clip-path:circle(0% at 50% 50%);}
+
+  /* UTILITY */
+  .util{background:#050505;padding:10px 0;font-size:12px;color:var(--mute);border-bottom:1px solid var(--line);}
+  .util-in{max-width:1400px;margin:0 auto;padding:0 40px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;}
+  .util a{color:var(--mute);}
+  .util a:hover{color:var(--orange);}
+  .util .live{color:var(--orange);font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:11px;}
+
+  /* HEADER */
+  header{position:sticky;top:0;z-index:100;background:rgba(14,14,15,.85);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;max-width:1400px;margin:0 auto;gap:28px;}
+  .brand{display:flex;align-items:center;gap:16px;}
+  .brand img{width:72px;height:72px;filter:drop-shadow(0 6px 20px rgba(255,102,0,.28));}
+  .brand .t{font-family:'Bebas Neue';font-size:30px;letter-spacing:2.5px;line-height:1;}
+  .brand .s{font-family:'Playfair Display';font-style:italic;font-size:12px;color:var(--orange);margin-top:5px;}
+  .menu{display:flex;gap:26px;align-items:center;}
+  .menu a{font-size:12.5px;font-weight:600;color:#d8d8d8;letter-spacing:.4px;}
+  .menu a:hover{color:var(--orange);}
+
+  /* HERO — Athlete spotlight */
+  .hero{position:relative;min-height:90vh;padding:40px 0 80px;overflow:hidden;}
+  .hero::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(ellipse at 75% 40%, rgba(255,102,0,.22), transparent 55%),
+    radial-gradient(ellipse at 20% 80%, rgba(255,102,0,.12), transparent 55%),
+    linear-gradient(180deg, #0E0E0F 0%, #050505 100%);}
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;min-height:80vh;}
+  .hero-left{padding:20px 0;}
+  .hero-left .chapter{font-family:'Playfair Display';font-style:italic;color:var(--orange);font-size:18px;margin-bottom:24px;display:flex;align-items:center;gap:12px;}
+  .hero-left .chapter::before{content:"";width:36px;height:1px;background:var(--orange);}
+  .hero h1{font-size:clamp(72px,11vw,172px);letter-spacing:-0.5px;margin-bottom:28px;}
+  .hero h1 .serif{font-size:.8em;letter-spacing:-2px;color:var(--orange);display:block;line-height:.9;}
+  .hero h1 .o{color:var(--orange);}
+  .hero-left p{font-size:18px;color:#d0d0d0;line-height:1.7;max-width:540px;margin-bottom:30px;}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px;}
+  .hero-scroll{display:flex;align-items:center;gap:16px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#888;}
+  .hero-scroll .line{width:60px;height:1px;background:rgba(255,255,255,.2);position:relative;overflow:hidden;}
+  .hero-scroll .line::after{content:"";position:absolute;left:0;top:0;bottom:0;width:40%;background:var(--orange);animation:scroll 2s ease-in-out infinite;}
+  @keyframes scroll{0%{transform:translateX(-100%);}100%{transform:translateX(250%);}}
+
+  /* Athlete figure */
+  .hero-right{position:relative;aspect-ratio:3/4;display:flex;align-items:flex-end;justify-content:center;}
+  .spotlight{position:absolute;inset:0;background:
+    radial-gradient(circle at 50% 55%, rgba(255,102,0,.22), transparent 55%);
+    filter:blur(20px);}
+  .figure{position:relative;width:100%;height:100%;z-index:2;background:url('../media/Brody-1920w.png') center bottom/contain no-repeat;filter:drop-shadow(0 40px 80px rgba(0,0,0,.7)) drop-shadow(0 0 60px rgba(255,102,0,.25));}
+  .fig-frame{position:absolute;inset:20px;border:1px solid rgba(255,102,0,.25);border-radius:10px;pointer-events:none;}
+  .fig-frame::before{content:"DFC / 2026";position:absolute;top:-10px;left:24px;background:var(--bg);padding:0 12px;color:var(--orange);font-family:'Bebas Neue';font-size:13px;letter-spacing:3px;}
+  .player-number{position:absolute;top:10%;right:8%;font-family:'Bebas Neue';font-size:240px;color:rgba(255,102,0,.15);line-height:.8;letter-spacing:-6px;z-index:1;}
+  .quote-card{
+    position:absolute;left:-60px;bottom:60px;z-index:3;background:rgba(255,255,255,.98);color:#000;padding:26px 30px;border-radius:14px;
+    max-width:360px;box-shadow:0 30px 80px rgba(0,0,0,.5);transform:rotate(-3deg);
+  }
+  .quote-card .q{font-family:'Playfair Display';font-style:italic;font-size:19px;line-height:1.4;margin-bottom:14px;}
+  .quote-card .src{display:flex;align-items:center;gap:12px;padding-top:14px;border-top:1px solid rgba(0,0,0,.1);}
+  .quote-card .av{width:40px;height:40px;border-radius:50%;background:#241200 url('../media/Brody-1920w.png') center/180% no-repeat;background-position:center -2px;}
+  .quote-card .src .n{font-family:'Bebas Neue';font-size:18px;letter-spacing:1px;line-height:1;}
+  .quote-card .src .r{font-size:11px;color:#777;letter-spacing:1.5px;text-transform:uppercase;margin-top:3px;}
+  .stat-card{
+    position:absolute;right:-20px;top:80px;z-index:3;background:var(--ink);color:#fff;padding:20px 24px;border-radius:12px;
+    border:1px solid var(--line);box-shadow:0 20px 50px rgba(0,0,0,.4);min-width:180px;
+  }
+  .stat-card .label{font-size:10px;color:var(--orange);letter-spacing:2.5px;text-transform:uppercase;font-weight:700;margin-bottom:8px;}
+  .stat-card .num{font-family:'Bebas Neue';font-size:54px;color:#fff;line-height:.9;}
+  .stat-card .sub{font-size:12px;color:var(--mute);margin-top:6px;}
+
+  /* HERO stats below */
+  .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:60px 0 0;padding:32px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;z-index:1;}
+  .hero-stats > div{padding:0 24px;border-right:1px solid var(--line);}
+  .hero-stats > div:first-child{padding-left:0;}
+  .hero-stats > div:last-child{border-right:none;}
+  .hero-stats .n{font-family:'Bebas Neue';font-size:48px;letter-spacing:1px;line-height:1;}
+  .hero-stats .n em{font-style:normal;color:var(--orange);}
+  .hero-stats .l{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#999;margin-top:8px;}
+
+  /* WELCOME story */
+  .welcome{padding:140px 0;background:linear-gradient(180deg,var(--bg),#080809);position:relative;}
+  .welcome::before{content:"The Philosophy";position:absolute;top:60px;right:40px;font-family:'Playfair Display';font-style:italic;font-size:28px;color:rgba(255,102,0,.3);}
+  .w-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center;}
+  .w-grid .img-col{position:relative;}
+  .w-grid .img-col img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:14px;}
+  .w-grid .img-col .tag{position:absolute;top:24px;left:24px;background:rgba(0,0,0,.75);backdrop-filter:blur(10px);padding:10px 14px;border-radius:8px;font-size:11px;letter-spacing:2px;text-transform:uppercase;}
+  .welcome h2{font-size:clamp(54px,7vw,112px);margin:20px 0 32px;letter-spacing:2px;line-height:.95;}
+  .welcome h2 .serif{font-size:.9em;color:var(--orange);display:inline;}
+  .welcome p{font-size:16px;color:#c8c8c8;line-height:1.85;margin-bottom:16px;}
+  .welcome p em{font-style:italic;color:#fff;font-family:'Playfair Display';font-weight:400;}
+  .welcome .pull-quote{
+    border-left:3px solid var(--orange);padding:10px 0 10px 22px;margin:24px 0;
+    font-family:'Playfair Display';font-style:italic;font-size:22px;color:#fff;line-height:1.4;
+  }
+
+  /* FEATURE STORY — Brody's story pulled forward */
+  .feature-story{padding:140px 0;background:#050505;position:relative;overflow:hidden;}
+  .feature-story::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(ellipse at 20% 50%, rgba(255,102,0,.18), transparent 55%),
+    url('../media/Brody-1920w.png') right bottom/auto 105% no-repeat;
+    opacity:1;}
+  .feature-story::after{content:"";position:absolute;right:0;top:0;width:55%;height:100%;background:linear-gradient(270deg,transparent 0%,#050505 80%);}
+  .fs-in{position:relative;z-index:2;max-width:620px;}
+  .feature-story .eyebrow{font-family:'Playfair Display';font-style:italic;color:var(--orange);font-size:16px;letter-spacing:.5px;text-transform:none;font-weight:400;}
+  .feature-story h2{font-size:clamp(52px,7vw,108px);margin:18px 0 24px;letter-spacing:1.5px;}
+  .feature-story h2 em{font-style:normal;color:var(--orange);}
+  .feature-story .lede{font-size:22px;color:#fff;line-height:1.4;font-family:'Playfair Display';font-style:italic;margin-bottom:26px;}
+  .feature-story p{font-size:16px;color:#c0c0c0;line-height:1.8;margin-bottom:16px;}
+
+  /* PROGRAMS — trading cards */
+  .programs{padding:140px 0;}
+  .p-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:56px;}
+  .p-head h2{font-size:clamp(56px,7vw,108px);letter-spacing:2px;}
+  .p-head h2 em{font-style:normal;color:var(--orange);}
+  .p-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .pc{
+    background:linear-gradient(180deg,var(--card),#0d0d0f);border:1px solid var(--line);border-radius:20px;overflow:hidden;
+    display:flex;flex-direction:column;position:relative;transition:.35s;
+  }
+  .pc:hover{transform:translateY(-6px);border-color:rgba(255,102,0,.5);box-shadow:0 30px 60px rgba(0,0,0,.4);}
+  .pc-top{position:relative;padding:24px 28px 18px;display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid var(--line);}
+  .pc-top .num{font-family:'Bebas Neue';font-size:16px;letter-spacing:4px;color:var(--orange);}
+  .pc-top .chip{background:rgba(255,102,0,.12);color:var(--orange);font-size:10px;font-weight:700;letter-spacing:2px;padding:5px 10px;border-radius:999px;text-transform:uppercase;border:1px solid rgba(255,102,0,.25);}
+  .pc-img{aspect-ratio:16/10;background-size:cover;background-position:center;position:relative;}
+  .pc-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.6));}
+  .pc-body{padding:26px 28px 28px;display:flex;flex-direction:column;flex:1;}
+  .pc-body h3{font-size:34px;letter-spacing:1.5px;margin-bottom:12px;}
+  .pc-body p{font-size:14px;color:#a8a8a8;line-height:1.7;margin-bottom:14px;flex:1;}
+  .pc-body ul{list-style:none;padding:0;margin:6px 0 18px;}
+  .pc-body ul li{font-size:13px;padding:5px 0;color:#d0d0d0;display:flex;align-items:flex-start;gap:10px;}
+  .pc-body ul li::before{content:"➜";color:var(--orange);flex-shrink:0;}
+  .pc-foot{border-top:1px solid var(--line);padding:16px 28px;display:flex;justify-content:space-between;align-items:center;font-family:'Bebas Neue';letter-spacing:2.5px;font-size:13px;}
+  .pc-foot .go{color:var(--orange);}
+  .pc-foot .mini{font-size:11px;color:var(--mute);letter-spacing:2px;}
+
+  /* FIRST TEAM spotlight */
+  .first-team{padding:140px 0;background:linear-gradient(120deg,#0a0a0a,#1a0d04 90%);position:relative;overflow:hidden;}
+  .first-team::before{content:"1ST TEAM";position:absolute;left:-20px;top:-40px;font-family:'Bebas Neue';font-size:320px;color:rgba(255,102,0,.05);letter-spacing:-6px;}
+  .ft-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1;}
+  .ft-grid img{border-radius:16px;width:100%;height:540px;object-fit:cover;box-shadow:0 30px 70px rgba(0,0,0,.5);}
+  .first-team h2{font-size:clamp(52px,7vw,108px);margin:16px 0 24px;letter-spacing:1.5px;}
+  .first-team h2 em{font-style:normal;color:var(--orange);}
+  .first-team p{font-size:16px;color:#d0d0d0;line-height:1.8;margin-bottom:18px;max-width:520px;}
+  .ft-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:28px 0;padding:24px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .ft-stats .n{font-family:'Bebas Neue';font-size:52px;color:var(--orange);line-height:1;}
+  .ft-stats .l{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#c0c0c0;margin-top:5px;}
+
+  /* NEWS */
+  .news{padding:140px 0;background:var(--bg);}
+  .n-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;flex-wrap:wrap;gap:20px;}
+  .n-head h2{font-size:clamp(52px,7vw,108px);letter-spacing:2px;}
+  .n-head h2 em{font-style:normal;color:var(--orange);}
+  .n-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:24px;}
+  .nc{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:.3s;}
+  .nc:hover{transform:translateY(-4px);border-color:var(--orange);}
+  .nc .img{aspect-ratio:16/10;background-size:cover;background-position:center;}
+  .nc .body{padding:22px;flex:1;display:flex;flex-direction:column;}
+  .nc .pill{align-self:flex-start;background:var(--orange);color:#000;font-size:10px;font-weight:700;letter-spacing:2px;padding:4px 10px;border-radius:999px;margin-bottom:12px;text-transform:uppercase;}
+  .nc h3{font-family:'Inter';font-size:18px;font-weight:700;line-height:1.35;margin-bottom:10px;letter-spacing:-0.01em;}
+  .nc p{font-size:13.5px;color:#A0A0A0;line-height:1.6;flex:1;}
+  .nc .read{margin-top:14px;font-family:'Bebas Neue';font-size:13px;letter-spacing:2px;color:var(--orange);}
+  .nc-lg{grid-column:span 3;}
+  .nc-md{grid-column:span 3;}
+  .nc-sm{grid-column:span 2;}
+
+  /* IG */
+  .ig{padding:100px 0;text-align:center;}
+  .ig h2{font-size:clamp(44px,5vw,76px);letter-spacing:2px;margin-bottom:8px;}
+  .ig h2 em{font-style:normal;color:var(--orange);}
+  .ig .handle{color:var(--mute);margin-bottom:22px;}
+  .ig .counts{display:flex;gap:44px;justify-content:center;margin:24px 0 36px;}
+  .ig .counts .n{font-family:'Bebas Neue';font-size:46px;color:var(--orange);line-height:1;}
+  .ig .counts .l{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mute);margin-top:4px;}
+
+  /* CTA */
+  .cta{padding:160px 0;background:var(--orange);color:#000;position:relative;overflow:hidden;}
+  .cta::before{content:"";position:absolute;inset:0;background:url('../media/Brody-1920w.png') 92% center/auto 120% no-repeat;opacity:.18;mix-blend-mode:multiply;}
+  .cta-in{position:relative;z-index:1;max-width:1000px;}
+  .cta .eyebrow{color:#000;letter-spacing:4px;}
+  .cta h2{font-size:clamp(72px,11vw,188px);letter-spacing:1px;line-height:.85;margin:20px 0 24px;}
+  .cta h2 .stroke{-webkit-text-stroke:2px #000;color:transparent;}
+  .cta h2 .serif{font-size:.75em;color:#000;}
+  .cta p{font-size:18px;max-width:520px;margin-bottom:32px;line-height:1.6;}
+  .cta-info{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:40px;max-width:760px;}
+  .cta-info div{border-left:2px solid #000;padding-left:16px;}
+  .cta-info .l{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;}
+  .cta-info .v{font-family:'Bebas Neue';font-size:24px;margin-top:6px;letter-spacing:1px;}
+
+  /* FOOTER */
+  footer{background:#020202;color:var(--mute);padding:100px 0 40px;}
+  .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;}
+  .foot h4{font-size:11px;color:var(--orange);letter-spacing:3px;text-transform:uppercase;margin-bottom:14px;font-weight:700;}
+  .foot a{display:block;padding:5px 0;font-size:14px;transition:.2s;}
+  .foot a:hover{color:var(--orange);}
+  .foot .bb img{width:104px;height:104px;margin-bottom:20px;filter:drop-shadow(0 10px 28px rgba(255,102,0,.3));}
+  .foot .bb .n{font-family:'Bebas Neue';font-size:30px;color:#fff;letter-spacing:2px;}
+  .foot .bb p{font-size:14px;margin:14px 0;line-height:1.7;max-width:320px;}
+  .foot-btm{border-top:1px solid var(--line);margin-top:56px;padding-top:28px;display:flex;justify-content:space-between;font-size:12px;flex-wrap:wrap;gap:12px;}
+  .socials{display:flex;gap:12px;margin-top:14px;}
+  .socials a{width:38px;height:38px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:50%;padding:0;}
+  .socials a:hover{border-color:var(--orange);color:var(--orange);}
+  .socials svg{width:16px;height:16px;}
+
+  .ribbon{position:fixed;bottom:20px;right:20px;z-index:200;background:#000;color:#fff;padding:12px 18px;border-radius:999px;font-size:11px;letter-spacing:2px;text-transform:uppercase;box-shadow:0 10px 30px rgba(0,0,0,.5);border:1px solid var(--line);}
+  .ribbon a{color:var(--orange);margin-left:8px;font-weight:700;}
+
+  @media (max-width:1100px){
+    .menu{display:none;}
+    .hero-grid{grid-template-columns:1fr;gap:60px;}
+    .hero-right{aspect-ratio:1/1;}
+    .quote-card{left:20px;bottom:20px;}
+    .stat-card{right:20px;top:20px;}
+    .hero-stats{grid-template-columns:1fr 1fr;gap:20px;}
+    .hero-stats > div{border-right:none;border-bottom:1px solid var(--line);padding:0 0 16px;}
+    .w-grid{grid-template-columns:1fr;gap:40px;}
+    .p-grid{grid-template-columns:1fr;}
+    .ft-grid{grid-template-columns:1fr;}
+    .ft-grid img{height:400px;}
+    .n-grid{grid-template-columns:1fr;}
+    .nc-lg,.nc-md,.nc-sm{grid-column:span 1;}
+    .foot{grid-template-columns:1fr 1fr;}
+    .cta h2{font-size:64px;}
+    .cta-info{grid-template-columns:1fr;}
+    .wrap{padding:0 20px;}
+    .nav{padding:14px 20px;}
+    .feature-story::before{opacity:.2;background-size:auto 90%;background-position:110% bottom;}
+  }
+</style>
+</head>
+<body>
+
+<div class="trans" id="trans"><img src="../media/DutchFCLogoNoMatte1-LOGO.gif" alt="Dutch FC"/></div>
+
+<!-- UTILITY -->
+<div class="util">
+  <div class="util-in">
+    <div><a href="tel:+14692567200">+1 469.256.7200</a> &nbsp;·&nbsp; <a href="mailto:Info@DutchFC.com">Info@DutchFC.com</a> &nbsp;·&nbsp; Frisco, TX</div>
+    <div style="display:flex;gap:20px;align-items:center;">
+      <span class="live">● Tryouts 26/27 · May 11 – Jun 12</span>
+      <a href="#">Shop Dutch Gear</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <nav class="nav">
+    <a class="brand" href="#">
+      <img src="../media/DutchFCLogoNoMatte1-LOGO.gif" alt="Dutch FC"/>
+      <div><div class="t">Dutch Football Club</div><div class="s">— Est. 2018 · North Dallas</div></div>
+    </a>
+    <div class="menu">
+      <a href="#welcome">Club</a><a href="#programs">Programs</a><a href="#programs">Teams</a>
+      <a href="#programs">Camps &amp; Skills</a><a href="#news">News</a><a href="#">Coaches</a>
+      <a class="btn btn-primary" href="#cta">Tryouts</a>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO: Athlete spotlight -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="chapter">— A Dutch FC Story</div>
+        <h1><span class="serif">Play with</span> PASSION. <span class="serif">Train with</span> <span class="o">PURPOSE.</span> <span class="serif">Compete for</span> GLORY.</h1>
+        <p>For Brody Ballenger, it started at his first tryout. For you, it might start this May. Dutch Football Club builds footballers one story at a time.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#cta">Play for Dutch FC →</a>
+          <a class="btn btn-ghost" href="#feature-story">Read Brody's Story</a>
+        </div>
+        <div class="hero-scroll"><span class="line"></span> Scroll to continue</div>
+      </div>
+
+      <div class="hero-right">
+        <div class="spotlight"></div>
+        <div class="player-number">07</div>
+        <div class="figure" aria-label="Dutch FC player Brody"></div>
+        <div class="fig-frame"></div>
+        <div class="stat-card">
+          <div class="label">Season 26/27</div>
+          <div class="num">COMMITTED</div>
+          <div class="sub">Dutch FC → College Soccer</div>
+        </div>
+        <div class="quote-card">
+          <div class="q">"From my first tryout, I knew. Dutch FC doesn't just train players — they build them."</div>
+          <div class="src">
+            <div class="av"></div>
+            <div><div class="n">Brody Ballenger</div><div class="r">College Commit · Dutch FC Alumnus</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div><div class="n"><em>31</em></div><div class="l">Select Teams · U11+</div></div>
+      <div><div class="n">17</div><div class="l">Academy Teams · U10–</div></div>
+      <div><div class="n"><em>2018</em></div><div class="l">Club Established</div></div>
+      <div><div class="n">UPSL</div><div class="l">1st Team · Tier 4</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WELCOME -->
+<section class="welcome" id="welcome">
+  <div class="wrap w-grid">
+    <div class="img-col">
+      <img src="../media/2011Winners-919033a1-1920w.jpg" alt="Dutch FC champions"/>
+      <span class="tag">The Philosophy</span>
+    </div>
+    <div>
+      <div class="eyebrow">Welcome</div>
+      <h2>The <span class="serif">Dutch way</span> of football.</h2>
+      <div class="pull-quote">"It's not the size of the dog in the fight but the size of the fight in the dog."</div>
+      <p>That rings so true for the tiny geographic country of The Netherlands, aka Holland. However, when it comes to the world game of football, the Dutch are titans.</p>
+      <p>The Dutch changed the trajectory of World Football when they introduced the revolutionary <em>"Total Football"</em> style of play in the '70s which fostered a culture, methodology, and philosophy that future generations still benefit from today. Fitting into Texas 16 times over and equaling the same number of participants in the game just in Texas alone, The Netherlands youth club system (Ajax, Feyenoord &amp; PSV and many more), continue to produce a healthy consistent crop of intelligent and skillful players that dominate the top leagues throughout Europe.</p>
+      <p>The exceptional talent produced in Holland is displayed on its national team famously wearing the Orange Colors. By adopting and implementing the successful footballing methodology and philosophy of the Dutch, The Dutch Football Club is proud to bring this unique footballing culture to soccer enthusiasts in the North Dallas area.</p>
+      <p>For those wanting to take their game to the next level, Dutch Lions deliver a soccer experience that inspires a lifelong <em>PASSION</em> for the game, <em>DEVELOPs</em> an attacking-possessive style of play, and prepares players to <em>COMPETE</em> at the highest levels — helping each athlete reach their full footballing potential.</p>
+      <a class="btn btn-primary" href="#" style="margin-top:14px;">Club Philosophy Details →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE STORY -->
+<section class="feature-story" id="feature-story">
+  <div class="wrap fs-in">
+    <div class="eyebrow">A Dutch FC Story · Featured Article</div>
+    <h2>From first <em>tryout</em> to college <em>commitment.</em></h2>
+    <p class="lede">"Not every college player starts where you'd expect."</p>
+    <p>Brody Ballenger's Dutch FC story begins at a single open tryout in North Dallas. It ends — for this chapter, anyway — at a college signing table. What happens in between is the methodology. The Friday night TIPS sessions. The select team fixtures. The coaches who believed in the long game. The community that showed up every weekend.</p>
+    <p>It's the story we want to tell a thousand more times. Maybe yours is next.</p>
+    <a class="btn btn-primary" href="#" style="margin-top:18px;">Read the Full Story →</a>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="programs" id="programs">
+  <div class="wrap">
+    <div class="p-head">
+      <div>
+        <div class="eyebrow">Club Programs · Est. 2018</div>
+        <h2 style="margin-top:14px;">The <em>pathway.</em></h2>
+      </div>
+      <a class="btn btn-ghost" href="#">All Club Programs →</a>
+    </div>
+
+    <div class="p-grid">
+      <div class="pc">
+        <div class="pc-top"><span class="num">01 · TEAMS</span><span class="chip">Boys &amp; Girls</span></div>
+        <div class="pc-img" style="background-image:url('../media/2011Winners-919033a1-1920w.jpg');"></div>
+        <div class="pc-body">
+          <h3>Club Teams</h3>
+          <p>Dutch FC Select &amp; Academy teams compete at various leagues. Advanced, intermediate and developmental level teams in each age group.</p>
+          <ul><li>31 Select Teams (U11 and Older)</li><li>17 Academy Teams (U10 and Younger)</li></ul>
+        </div>
+        <div class="pc-foot"><span class="mini">View All Club Teams</span><span class="go">Learn &amp; Tryout →</span></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-top"><span class="num">02 · CAMPS</span><span class="chip">U6 – U17</span></div>
+        <div class="pc-img" style="background-image:url('../media/General-6-1920w.jpg');"></div>
+        <div class="pc-body">
+          <h3>Spring &amp; Summer Camps</h3>
+          <p>Our camps are based on the Dutch soccer philosophy and methodology that promotes an enjoyable learning environment heavily focused on development.</p>
+          <ul><li>March 17th – 21st (Mon–Fri)</li><li>$140</li><li>Boys &amp; Girls Born 2018(U6) – 2008(U17)</li><li>All levels · divided by ability</li></ul>
+        </div>
+        <div class="pc-foot"><span class="mini">Next Session · March</span><span class="go">Enroll →</span></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-top"><span class="num">03 · SKILLS</span><span class="chip">TIPS Academy</span></div>
+        <div class="pc-img" style="background-image:url('../media/TIPSPACover-f389e6fb-1920w.jpg');"></div>
+        <div class="pc-body">
+          <h3>Advanced Skills Training</h3>
+          <p>The TIPS skills method is an training curriculum that boosts your base line fundamentals — first touch, ball mastery, decision-making.</p>
+          <ul><li>Fridays 5:30 – 6:45</li><li>Boys &amp; Girls Born 2018(U6) – 2008(U17)</li><li>All levels · divided by ability</li></ul>
+        </div>
+        <div class="pc-foot"><span class="mini">Weekly · Friday</span><span class="go">Enroll →</span></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-top"><span class="num">04 · GOALKEEPERS</span><span class="chip">Specialist</span></div>
+        <div class="pc-img" style="background-image:url('../media/DutchFCMensBanner-1920w.jpeg');"></div>
+        <div class="pc-body">
+          <h3>GK Fundamentals Training</h3>
+          <p>Improve your Goalkeeper Fundamental skills with GKer coach Trey Nickel, and strengthen your foundation to grow into a stronger keeper.</p>
+        </div>
+        <div class="pc-foot"><span class="mini">Coach Trey Nickel</span><span class="go">Tryout →</span></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-top"><span class="num">05 · GAMEPLAN</span><span class="chip">Community</span></div>
+        <div class="pc-img" style="background-image:url('../media/FMSC1-1920w.jpg');"></div>
+        <div class="pc-body">
+          <h3>Game Plan for Life · FCA</h3>
+          <p>Join our Game Plan for Life where we host FELLOWSHIP of CHRISTIAN ATHLETES (FCA) events, raise funds and volunteer at The Big Pack in Frisco for Feed My Starving Children (FMSC).</p>
+        </div>
+        <div class="pc-foot"><span class="mini">Faith · Service</span><span class="go">Learn More →</span></div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-top"><span class="num">06 · PATHWAY</span><span class="chip">U16+</span></div>
+        <div class="pc-img" style="background-image:url('../media/Team-1920w.jpeg');"></div>
+        <div class="pc-body">
+          <h3>College Placement Program</h3>
+          <p>Partners &amp; sponsors, college showcase support, and recruitment guidance for U16+ players chasing the next level — like Brody Ballenger's story.</p>
+        </div>
+        <div class="pc-foot"><span class="mini">College Soccer · Recruitment</span><span class="go">Learn More →</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1ST TEAM -->
+<section class="first-team">
+  <div class="wrap ft-grid">
+    <img src="../media/The1stteam-42476a7a-1920w.png" alt="Dutch FC 1st Team"/>
+    <div>
+      <div class="eyebrow">The 1st Team · UPSL 18 &amp; Older</div>
+      <h2>Tier <em>four</em> of the <em>US Soccer</em> pyramid.</h2>
+      <p>The Dutch FC 1st Team participates in the United Premier Soccer League (UPSL) which is the 4th tier of the US Soccer pyramid, just below the three professional tiers.</p>
+      <p>With an average age of 22.5 years, over 400 teams nationwide compete for 32 places in the National Playoff Bracket to become National Champions.</p>
+      <div class="ft-stats">
+        <div><div class="n">22.5</div><div class="l">Avg Age</div></div>
+        <div><div class="n">400+</div><div class="l">Clubs</div></div>
+        <div><div class="n">32</div><div class="l">Playoff Spots</div></div>
+      </div>
+      <a class="btn btn-primary" href="#">Learn More &amp; Register →</a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="news" id="news">
+  <div class="wrap">
+    <div class="n-head">
+      <div>
+        <div class="eyebrow">News, Blogs &amp; Articles</div>
+        <h2 style="margin-top:14px;">More <em>stories.</em></h2>
+      </div>
+      <a class="btn btn-ghost" href="#">All Articles →</a>
+    </div>
+    <div class="n-grid">
+      <a class="nc nc-md" href="#">
+        <div class="img" style="background-image:url('../media/2011Winners-919033a1-1920w.jpg');"></div>
+        <div class="body"><span class="pill">Philosophy</span><h3>Results vs. Performance: The False Choice in Youth Soccer</h3><p>There's a belief in North Texas youth soccer you have to choose: beautiful football or winning. Development or results. At Dutch FC, we reject that choice.</p><span class="read">Read Article →</span></div>
+      </a>
+      <a class="nc nc-md" href="#">
+        <div class="img" style="background-image:url('../media/General-6-1920w.jpg');"></div>
+        <div class="body"><span class="pill">Guide</span><h3>A Comparison Guide of Club, School, and Recreational Soccer</h3><p>There is no right or wrong way to any journey, only trade offs.</p><span class="read">Read →</span></div>
+      </a>
+      <a class="nc nc-sm" href="#">
+        <div class="img" style="background-image:url('../media/DutchFCMensBanner-1920w.jpeg');"></div>
+        <div class="body"><span class="pill">Announcement</span><h3>Dutch FC Welcomes Tim Trevino as Director of Coaching</h3><p>FOR IMMEDIATE RELEASE</p><span class="read">Read →</span></div>
+      </a>
+      <a class="nc nc-sm" href="#">
+        <div class="img" style="background-image:url('../media/TIPSPACover-f389e6fb-1920w.jpg');"></div>
+        <div class="body"><span class="pill">Development</span><h3>Playing Time In Club Soccer</h3><p>A challenging balancing act for coaches. What's fair and just? Well, the real answer is, "It depends."</p><span class="read">Read →</span></div>
+      </a>
+      <a class="nc nc-sm" href="#">
+        <div class="img" style="background-image:url('../media/TheSquadSystem-1920w.png');"></div>
+        <div class="body"><span class="pill">System</span><h3>The Squad System</h3><p>A better way to Enjoy, Develop &amp; Compete.</p><span class="read">Read →</span></div>
+      </a>
+      <a class="nc nc-md" href="#">
+        <div class="img" style="background-image:url('../media/DutchWomensSoccer-1920w.jpg');"></div>
+        <div class="body"><span class="pill">Women's World</span><h3>Rise of the Dutch Lionesses in Women's World Football</h3><p>Ranked third in FIFA behind USA and Germany, ahead of France, England, Brazil, and Japan. Over the last decade, the tiny country of the Netherlands has become a formidable contender on the national stage.</p><span class="read">Read →</span></div>
+      </a>
+      <a class="nc nc-md" href="#">
+        <div class="img" style="background-image:url('../media/FMSC1-1920w.jpg');"></div>
+        <div class="body"><span class="pill">Origins</span><h3>The Origins of Dutch Football Philosophy and Methodology</h3><p>The Dutch have earned a deserved reputation for their technical creativity, tactical awareness, attacking possessive style, and ability to know where and how on a football field to find their team mates. These qualities are the result of a guiding philosophy instilled at the grass roots.</p><span class="read">Read →</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- IG -->
+<section class="ig">
+  <div class="wrap">
+    <div class="eyebrow">@dutchfootballclub</div>
+    <h2 style="margin-top:14px;">Follow the <em>journey.</em></h2>
+    <div class="handle">Dutch Football Club · @dutchfootballclub</div>
+    <div class="counts">
+      <div><div class="n">216</div><div class="l">Posts</div></div>
+      <div><div class="n">519</div><div class="l">Followers</div></div>
+      <div><div class="n">2</div><div class="l">Following</div></div>
+    </div>
+    <a class="btn btn-primary" href="#">Follow on Instagram →</a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="cta">
+  <div class="wrap cta-in">
+    <div class="eyebrow">Tryouts 26/27 · No Cost</div>
+    <h2><span class="serif">Your story</span><br>starts <span class="stroke">here.</span></h2>
+    <p>Play for Dutch FC. Tryouts run May 11th – June 12th at Fields of Faith Training Facilities, Stonebriar Community Church.</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;">
+      <a class="btn" href="#" style="background:#000;color:#fff;font-size:17px;padding:18px 32px;">View Tryout Details →</a>
+      <a class="btn" href="https://goo.gl/maps/KkciTiUWV6Kzt9rs9" target="_blank" rel="noopener" style="border:2px solid #000;color:#000;font-size:17px;padding:18px 32px;">Directions ↗</a>
+    </div>
+    <div class="cta-info">
+      <div><div class="l">Dates</div><div class="v">May 11 – Jun 12</div></div>
+      <div><div class="l">Cost</div><div class="v">No Cost</div></div>
+      <div><div class="l">Location</div><div class="v">Frisco, TX</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="bb">
+        <img src="../media/DutchFCLogoNoMatte1-LOGO.gif" alt="Dutch FC"/>
+        <div class="n">Dutch Football Club</div>
+        <p>Proud member of UPSL. Call, email or text to learn about gaining a better soccer experience.</p>
+        <div style="font-size:14px;color:#d0d0d0;">Frisco, Texas<br>+1 469.256.7200 &nbsp;|&nbsp; Info@DutchFC.com</div>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H8v-2.9h2.5V9.8c0-2.5 1.5-3.9 3.7-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6v1.9h2.8l-.5 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7s-.2-1.6-.9-2.3c-.8-.9-1.8-.9-2.2-1C16.6 3.5 12 3.5 12 3.5s-4.6 0-7.9.2c-.4.1-1.4.1-2.2 1C1.2 5.4 1 7 1 7S.8 8.9.8 10.8v1.6c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.8.9 1.9.9 2.4 1C5.7 19.7 12 19.8 12 19.8s4.6 0 7.9-.2c.4-.1 1.4-.1 2.2-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8v-1.6C23.2 8.9 23 7 23 7zM9.7 14.6V8.4l6 3.1-6 3.1z"/></svg></a>
+        </div>
+      </div>
+      <div><h4>The Club</h4><a href="#">Club Philosophy</a><a href="#">Our Culture &amp; Values</a><a href="#">Game Plan for Life</a><a href="#">Partners &amp; Sponsors</a><a href="#">News &amp; Press</a><a href="#">Coaches</a></div>
+      <div><h4>Programs</h4><a href="#">Join a Team</a><a href="#">Skills Training</a><a href="#">Camps</a><a href="#">Goalkeeper Training</a><a href="#">College Placement</a><a href="#">1st Team (UPSL)</a></div>
+      <div><h4>Teams</h4><a href="#">The 1st Team</a><a href="#">Adults Program</a><a href="#">All Club Teams</a><a href="#">Tryouts 26/27</a><a href="#">Shop Dutch Gear</a><a href="#">Home</a></div>
+    </div>
+    <div class="foot-btm">
+      <span>© 2026 Dutch Football Club. All Rights Reserved.</span>
+      <span>Privacy · Terms · Proud Member of UPSL</span>
+    </div>
+  </div>
+</footer>
+
+<div class="ribbon">Layout 04 · The Athlete <a href="index.html">← Pick another</a></div>
+
+<script>
+  window.addEventListener('load',()=>setTimeout(()=>document.getElementById('trans').classList.add('done'),300));
+</script>
+
+</body>
+</html>
