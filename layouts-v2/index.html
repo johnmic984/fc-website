@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Dutch FC — Homepage Redesign · 4 Directions</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Inter',sans-serif;background:#050505;color:#fff;min-height:100vh;padding:72px 32px;}
+  .wrap{max-width:1240px;margin:0 auto;}
+  .top{display:flex;align-items:center;gap:18px;margin-bottom:48px;}
+  .top img{width:72px;height:72px;filter:drop-shadow(0 8px 22px rgba(255,102,0,.28));}
+  .top .brand{font-family:'Bebas Neue';font-size:30px;letter-spacing:2.5px;line-height:1;}
+  .top .brand em{display:block;font-family:'Inter';font-style:normal;font-size:10px;letter-spacing:3px;color:#FF6600;font-weight:600;margin-top:6px;}
+  .eyebrow{font-size:11px;color:#FF6600;letter-spacing:5px;text-transform:uppercase;font-weight:600;margin-bottom:18px;}
+  h1{font-family:'Bebas Neue';font-size:clamp(56px,8vw,104px);letter-spacing:1px;line-height:.95;}
+  h1 em{font-style:normal;color:#FF6600;}
+  .lede{font-size:17px;color:#A0A0A0;max-width:720px;line-height:1.7;margin:22px 0 56px;}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;}
+  .card{background:#111;border:1px solid rgba(255,255,255,.08);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .35s,border-color .35s,box-shadow .35s;}
+  .card:hover{transform:translateY(-6px);border-color:#FF6600;box-shadow:0 30px 70px rgba(255,102,0,.18);}
+  .thumb{height:280px;position:relative;overflow:hidden;}
+  .body{padding:32px 32px 36px;display:flex;flex-direction:column;gap:12px;}
+  .num{font-family:'Bebas Neue';font-size:18px;color:#FF6600;letter-spacing:4px;}
+  .body h3{font-family:'Bebas Neue';font-size:42px;letter-spacing:1.5px;line-height:.95;}
+  .body p{font-size:14.5px;color:#A0A0A0;line-height:1.7;}
+  .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;}
+  .tag{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.06);padding:6px 10px;border-radius:999px;}
+  .arrow{margin-top:14px;color:#FF6600;font-family:'Bebas Neue';letter-spacing:2px;font-size:16px;}
+  .back{display:inline-block;margin-top:56px;color:#A0A0A0;font-size:13px;letter-spacing:2px;text-transform:uppercase;}
+  .back:hover{color:#FF6600;}
+
+  .t1{background:linear-gradient(135deg,#0A0A0A 0 50%,#FF6600 50% 100%);position:relative;}
+  .t1::after{content:"STATEMENT";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-8deg);font-family:'Bebas Neue';font-size:72px;letter-spacing:6px;color:#fff;text-shadow:4px 4px 0 rgba(0,0,0,.25);}
+  .t2{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:6px;padding:6px;background:#1a1a1a;}
+  .t2 > div{border-radius:6px;background-size:cover;background-position:center;}
+  .t2 .a{grid-row:1 / span 2;background-image:url('../media/The1stteam-42476a7a-1920w.png');}
+  .t2 .b{background-image:url('../media/DutchWomensSoccer-1920w.jpg');}
+  .t2 .c{background:linear-gradient(135deg,#FF6600,#b04500);display:flex;align-items:center;justify-content:center;color:#000;font-family:'Bebas Neue';font-size:28px;letter-spacing:2px;}
+  .t3{background:
+    radial-gradient(ellipse at 30% 20%, rgba(255,102,0,.4), transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(255,102,0,.25), transparent 55%),
+    linear-gradient(180deg, #0a0a0a, #000), url('../media/DutchFCMensBanner-1920w.jpeg') center/cover;
+    background-blend-mode:normal, normal, normal, overlay;position:relative;}
+  .t3::after{content:"";position:absolute;inset:0;background:
+    repeating-linear-gradient(90deg, transparent 0, transparent 48px, rgba(255,255,255,.04) 48px, rgba(255,255,255,.04) 49px);}
+  .t4{background:url('../media/Brody-1920w.png') center bottom/contain no-repeat, radial-gradient(circle at 50% 60%, #241200, #000 70%);}
+
+  @media (max-width:780px){.grid{grid-template-columns:1fr;}h1{font-size:52px;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <img src="../media/DutchFCLogoNoMatte1-LOGO.gif" alt="Dutch FC"/>
+    <div class="brand">Dutch FC<em>Homepage Redesign · v2</em></div>
+  </div>
+  <div class="eyebrow">Four new directions</div>
+  <h1>Pick a <em>homepage.</em></h1>
+  <p class="lede">Four brand-new layouts, built from the full content of your current site. Each one maintains the orange & black identity, carries a larger logo, includes a video moment, and is designed to feel cleaner and more premium than Dallas Surf, Solar, Sting, Dallas Texans and the rest of the reference clubs. Open one, scroll, and tell me which direction to fully refine.</p>
+
+  <div class="grid">
+    <a class="card" href="layout-1-statement.html">
+      <div class="thumb t1"></div>
+      <div class="body">
+        <span class="num">LAYOUT 01</span>
+        <h3>The Statement</h3>
+        <p>Half-black, half-orange color-blocking. Oversized Bebas numerals. Sharp diagonal section breaks and a big top-left logo lockup. Confident, bold, unmistakably a football club — dialed up to magazine-cover energy.</p>
+        <div class="tags"><span class="tag">Color-blocked</span><span class="tag">Asymmetric</span><span class="tag">Bold</span></div>
+        <span class="arrow">Open Layout 01 →</span>
+      </div>
+    </a>
+    <a class="card" href="layout-2-gallery.html">
+      <div class="thumb t2"><div class="a"></div><div class="b"></div><div class="c">BENTO</div></div>
+      <div class="body">
+        <span class="num">LAYOUT 02</span>
+        <h3>The Gallery</h3>
+        <p>Bento-grid hero — video tile + player shot + quote + stats arranged like a modern dashboard. Rich photography throughout, a masonry news wall, and orange as an accent rather than a flood.</p>
+        <div class="tags"><span class="tag">Bento</span><span class="tag">Photo-led</span><span class="tag">Masonry</span></div>
+        <span class="arrow">Open Layout 02 →</span>
+      </div>
+    </a>
+    <a class="card" href="layout-3-stadium.html">
+      <div class="thumb t3"></div>
+      <div class="body">
+        <span class="num">LAYOUT 03</span>
+        <h3>The Stadium</h3>
+        <p>Premium club identity — full-bleed video hero, gradient mesh glow, pitch-line motifs, matchday-style stat blocks. The energy of a Euro 2024 or Nike Football site. Stunning, atmospheric, elevated.</p>
+        <div class="tags"><span class="tag">Atmospheric</span><span class="tag">Video-first</span><span class="tag">Premium</span></div>
+        <span class="arrow">Open Layout 03 →</span>
+      </div>
+    </a>
+    <a class="card" href="layout-4-athlete.html">
+      <div class="thumb t4"></div>
+      <div class="body">
+        <span class="num">LAYOUT 04</span>
+        <h3>The Athlete</h3>
+        <p>Player-led storytelling. Brody as the hero figure with a quote card overlay, program cards styled like trading cards, a featured story section pulled straight from your blog. Human, personal, inspirational.</p>
+        <div class="tags"><span class="tag">Player-led</span><span class="tag">Story-first</span><span class="tag">Personal</span></div>
+        <span class="arrow">Open Layout 04 →</span>
+      </div>
+    </a>
+  </div>
+
+  <a class="back" href="../index.html">← Current live site</a>
+  &nbsp;·&nbsp;
+  <a class="back" href="../layouts/index.html">← First 4 layouts (A–D)</a>
+</div>
+</body>
+</html>
